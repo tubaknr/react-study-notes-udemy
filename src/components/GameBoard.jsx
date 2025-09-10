@@ -7,23 +7,21 @@ const initialGameBoard = [
 ];
 
 export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
-  // STATE CREATE
-  const [gameBoard, setGameBoard] = useState(initialGameBoard);
+  // // STATE CREATE
+  // const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
-  function handleSelectSquare(rowIndex, colIndex) {
-    // STATE UPDATE
-    setGameBoard((prevGameBoard) => {
-      // COPY TO AN UPDATED VAR
-      const updatedGameBoard = [
-        ...prevGameBoard.map((innerArray) => [...innerArray]),
-      ];
-      updatedGameBoard[rowIndex][colIndex] = activePlayerSymbol;
-      return updatedGameBoard;
-    });
+  // function handleSelectSquare(rowIndex, colIndex) {
+  //   // STATE UPDATE
+  //   setGameBoard((prevGameBoard) => {
+  //     // COPY TO AN UPDATED VAR
+  //     const updatedGameBoard = [...prevGameBoard.map((innerArray) => [...innerArray])];
+  //     updatedGameBoard[rowIndex][colIndex] = activePlayerSymbol;
+  //     return updatedGameBoard;
+  //   });
 
-    // change the player
-    onSelectSquare();
-  }
+  //   // change the player
+  //   onSelectSquare();
+  // }
 
   return (
     <ol id="game-board">
@@ -33,7 +31,8 @@ export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
                 {/* STATE UPDATE FCN CALLING AS ANONYMUOUS FCN */}
-                <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>
+                {/* <button onClick={() => handleSelectSquare(rowIndex, colIndex)}> */}
+                  <button onClick={onSelectSquare}>
                   {playerSymbol}
                 </button>
               </li>
