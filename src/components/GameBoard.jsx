@@ -1,12 +1,6 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-const initialGameBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
-
-export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
+export default function GameBoard({ onSelectSquare, gameBoard }) {
   // // STATE CREATE
   // const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
@@ -23,6 +17,7 @@ export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
   //   onSelectSquare();
   // }
 
+
   return (
     <ol id="game-board">
       {gameBoard.map((row, rowIndex) => (
@@ -32,7 +27,9 @@ export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
               <li key={colIndex}>
                 {/* STATE UPDATE FCN CALLING AS ANONYMUOUS FCN */}
                 {/* <button onClick={() => handleSelectSquare(rowIndex, colIndex)}> */}
-                  <button onClick={onSelectSquare}>
+                  <button 
+                  onClick={() => onSelectSquare(rowIndex, colIndex)}
+                  disabled={playerSymbol !== null}>
                   {playerSymbol}
                 </button>
               </li>
