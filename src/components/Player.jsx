@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({ initialName, symbol, isActive, onChangeName }) {
   // STATE CREATE
   const [isEditing, setIsEditing] = useState(false);
 
@@ -10,6 +10,11 @@ export default function Player({ initialName, symbol, isActive }) {
   // STATE UPDATE
   const handleClick = () => {
     setIsEditing((editing) => !editing); // state dğiştiği zaman aşağıda return un içindeki tüm jsx i yeniden render eder.
+  
+    if(isEditing){
+      onChangeName(symbol, playerName);
+    }
+
   };
 
   // STATE UPDATE
